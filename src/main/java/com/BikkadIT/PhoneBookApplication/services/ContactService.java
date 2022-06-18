@@ -12,6 +12,6 @@ public interface ContactService {
   
   Contact getContactById(Integer cid);
   
-  
+  public boolean UpdateContact(Contact contact);
   
 }
