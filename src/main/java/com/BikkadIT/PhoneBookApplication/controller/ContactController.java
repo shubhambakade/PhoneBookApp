@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,4 +50,15 @@ public class ContactController {
 		}
 	}
 		
+	public ResponseEntity<Contact> getContactById(@PathVariable Integer cid){
+		
+		Contact contact=contactServiceImpl.getContactById(cid);
+		if (contact !=null) {
+			return new ResponseEntity<Contact>(contact,HttpStatus.OK);
+		} else {
+			String s ="Record Not Found";
+			return new ResponseEntity(s,HttpStatus.BAD_REQUEST);
+		}
+		
+	}
 }
