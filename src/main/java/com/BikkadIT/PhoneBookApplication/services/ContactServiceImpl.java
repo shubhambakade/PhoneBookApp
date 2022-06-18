@@ -39,4 +39,10 @@ public class ContactServiceImpl implements ContactService {
 		
 	}
 
+	@Override
+	public Contact getContactById(Integer cid) {
+
+		return null;
+	}
+
 }

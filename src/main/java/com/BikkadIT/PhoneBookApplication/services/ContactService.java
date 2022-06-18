@@ -10,4 +10,8 @@ public interface ContactService {
   
   List<Contact> getAllContact();
   
+  Contact getContactById(Integer cid);
+  
+  
+  
 }

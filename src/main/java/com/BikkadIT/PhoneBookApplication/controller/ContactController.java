@@ -35,7 +35,7 @@ public class ContactController {
 	    }
    }
 	
-	@GetMapping(value="/getAllContact",produces = "APPLICATION/JSON")
+	@GetMapping(value="/getAllContact",produces = "application/json")
 	public ResponseEntity<List<Contact>> getAllContact(){
 	
 		List<Contact> list = contactServiceImpl.getAllContact();
