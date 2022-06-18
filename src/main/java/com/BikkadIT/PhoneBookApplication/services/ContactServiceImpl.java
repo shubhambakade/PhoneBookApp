@@ -60,4 +60,18 @@ public class ContactServiceImpl implements ContactService {
 	}
 	}
 
+	@Override
+	public boolean deleteById(Integer cid) {
+         Optional<Contact> findById=contactRepository.findById(cid);
+         
+         if (findById.isPresent()) {
+			
+        	 contactRepository.deleteById(cid);
+        	 return true;
+		} else {
+			return false;
+		}
+		
+	}
+
 }
