@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.BikkadIT.PhoneBookApplication.model.Contact;
 import com.BikkadIT.PhoneBookApplication.repository.ContactRepository;
+
+import ch.qos.logback.core.joran.conditional.IfAction;
 @Service
 public class ContactServiceImpl implements ContactService {
 	
@@ -62,16 +64,28 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean deleteById(Integer cid) {
-         Optional<Contact> findById=contactRepository.findById(cid);
-         
-         if (findById.isPresent()) {
-			
-        	 contactRepository.deleteById(cid);
-        	 return true;
-		} else {
-			return false;
-		}
+//         Optional<Contact> findById=contactRepository.findById(cid);
+//         
+//         if (findById.isPresent()) {
+//			
+//        	 contactRepository.deleteById(cid);
+//        	 return true;
+//		} else {
+//			return false;
+//		}
+	
+	   Optional<Contact> optional= contactRepository.findById(cid);
+	     
+	   if (optional.isPresent()) {
+		
+		   Contact contact = optional.get();
+		   contact.setActiveSwitch('N');
+		   contactRepository.save(contact);
+		   return true;
+	   }
+	   return false;
+	}
 		
 	}
 
-}
+
