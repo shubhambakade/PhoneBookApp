@@ -2,6 +2,7 @@ package com.BikkadIT.PhoneBookApplication.controller;
 
 import java.security.PublicKey;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BikkadIT.PhoneBookApplication.model.Contact;
+//import com.BikkadIT.PhoneBookApplication.props.AppConstants;
+//import com.BikkadIT.PhoneBookApplication.props.AppProps;
 import com.BikkadIT.PhoneBookApplication.services.ContactServiceImpl;
 
 @RestController
@@ -24,20 +27,26 @@ public class ContactController {
 	@Autowired
 	private ContactServiceImpl contactServiceImpl;
 	
+//	@Autowired
+//	private AppProps appProps;
+	
 	@PostMapping(value = "/savecontact",consumes = {"application/json"})
-	public ResponseEntity<String> SaveContact(@RequestBody Contact contact){
-		
-	boolean	save=contactServiceImpl.SaveContact(contact);
-		
-	if (save==true) {
-		String msg ="Contact save Successfully";
-		
-		return  new ResponseEntity<String>(msg,HttpStatus.CREATED);
-	} else {
-         String msg ="Contact Not Saved Successfully";
-		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
-	    }
-   }
+//	public ResponseEntity<String> SaveContact(@RequestBody Contact contact){
+//		
+////		Map<String, String> massages =appProps.getMessages();
+////		System.out.println(massages);
+//		
+//	  boolean	save=contactServiceImpl.SaveContact(contact);
+//		
+////	  if (save==true) {
+////		String msg =massages.get(AppConstants.SAVE_SUCCESS);
+////		return  new ResponseEntity<String>(msg,HttpStatus.CREATED);
+////		
+////	  } else {
+////         String msg =massages.get(AppConstants.SAVE_FAIL);
+////		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
+////	    }
+//   }
 	
 	@GetMapping(value="/getAllContact",produces = "application/json")
 	public ResponseEntity<List<Contact>> getAllContact(){
